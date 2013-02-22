@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <style>
+            /* App custom styles */
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="my.js">
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div id="head_id" data-theme="e" data-role="header" data-position="fixed">
+                <h3 id="head_title_id">
+                    青年教师版
+                </h3>
+                <div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="flip" data-theme="a" data-icon="home">
+                                版首
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="arrow-u">
+                                上页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="arrow-d">
+                                下页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="star">
+                                关注
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <h5 id="topic_id">
+                    主题:这样世界一流的大学真让青年教师
+                </h5>
+            </div>
+            <div data-role="content">
+                <div id="0_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            楼主:tangziwei,01-10:15:50
+                        </h3>
+                        <div id="content_text_id" class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <div data-role="fieldcontain">
+                                    <fieldset data-role="controlgroup">
+                                        <label for="textarea2">
+                                            文字区被占用
+                                        </label>
+                                        <textarea name="" id="textarea2" placeholder="" data-mini="true">
+                                        </textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="ui-block-b">
+                                <div data-role="fieldcontain">
+                                    <fieldset data-role="controlgroup">
+                                        <label for="toggleswitch1">
+                                            控件区域占用
+                                        </label>
+                                        <select name="toggleswitch1" id="toggleswitch1" data-theme="" data-role="slider">
+                                            <option value="off">
+                                                Off
+                                            </option>
+                                            <option value="on">
+                                                On
+                                            </option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <a id="reply_id" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#page1" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#page1" data-icon="info" data-iconpos="left">
+                            查看ID
+                        </a>
+                        <div id="hidden_content" data-role="collapsible-set" data-theme="d" data-content-theme="d">
+                            <div data-role="collapsible">
+                                <h3>
+                                    info_reply
+                                </h3>
+                                <div data-role="fieldcontain">
+                                    <fieldset data-role="controlgroup">
+                                        <label for="textarea1">
+                                        </label>
+                                        <textarea name="info" id="textarea1" placeholder="some content for reply or info" data-mini="true">
+                                        </textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="1_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            1楼:NobelWinner|01-10|15:52
+                        </h3>
+                        <img id="2_content_id" src="https://maps.googleapis.com/maps/api/staticmap?center=Madison, WI&amp;zoom=14&amp;size=250x200&amp;markers=Madison, WI&amp;sensor=false" height="200" width="250" />
+                        <a id="reply_2_id" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" href="#page1" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="info_2_id" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" href="#page1" data-icon="info" data-iconpos="left">
+                            查看ID
+                        </a>
+                        <div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+                            <div data-role="collapsible" data-collapsed="false">
+                                <h3>
+                                    info_reply
+                                </h3>
+                                <div data-role="fieldcontain">
+                                    <fieldset data-role="controlgroup">
+                                        <label for="textarea3">
+                                        </label>
+                                        <textarea name="" id="textarea3" placeholder="info or reply area">
+                                        </textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="foot_id" data-theme="a" data-role="footer" data-position="fixed">
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="home">
+                                首页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="grid">
+                                版列
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="info">
+                                我
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="" data-icon="gear">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <h3 id="foot_text_id">
+                    青年教师版-珞珈山水
+                </h3>
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+        </script>
+    </body>
+</html>

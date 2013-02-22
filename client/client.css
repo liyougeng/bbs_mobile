@@ -1,0 +1,59 @@
+/* Put your custom CSS here */
+/* 4 -hot top 10 */
+/* opti for muiltline support (tag ul-li) */
+			.ui-li .ui-btn-text a.ui-link-inherit {
+				white-space: normal;
+				padding-left: 0px;
+			}
+			.ui-li-thumb {
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+			.ui-header .ui-title , .ui-footer .ui-title {
+				white-space:normal;
+				margin-left:10px;
+				margin-right:10px;
+				font-size:12px;
+			}
+			.ui-li .ui-btn-inner {
+				padding:0px;
+				font-size:13px;			
+			}
+			/* opt for hide the right-icon */
+			.ui-li-count {
+				right:1px;
+			}
+			.ui-btn-icon-right .ui-icon {
+				display:none;
+			}
+			.ui-li-has-arrow.ui-li-has-count .ui-li-count {
+				right:4px;
+			}
+			.ui-collapsible-content {
+				padding:4px 5px;
+			}
+/* 2 -content list  */
+			#text_content_0,#text_content_1,#text_content_2,
+			#text_content_3,#text_content_4,#text_content_5,
+			#text_content_6,#text_content_7,#text_content_8,
+			#text_content_9 {
+				border:solid 1px #B3B3B3;
+				border-radius:10px;
+				-moz-border-radius:10px;
+				/*background:-moz-linear-gradient(center top , #FFFFFF, #F0F0F0) repeat scroll 0 0 #F0F0F0;*/
+				background-color:#F0F0F0;
+				box-shadow:0 1px 4px rgba(23,25,63,0.2);
+			}
+/* 3 -board topic */
+			/* opt for hide the right-icon */
+			/* opt for total content */
+			.ui-content {
+				padding:5px;
+			}
+			.ui-content .ui-listview-inset {
+				margin: 0.3em 0;
+			}
+			.ui-btn {
+				margin: 0.1em 1px;
+			}
+/* 5 -board list  */

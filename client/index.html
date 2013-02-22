@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>
+        </title><link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="my.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        <script src="client.js"></script>
+        <link rel="stylesheet" href="client.css" />
+<!-- offline 
+        <link rel="stylesheet" href="./res/jquery.mobile-1.2.0.min.css" />
+        <script src="./res/jquery-1.9.1.min.js"></script>
+        <script src="./res/jquery.mobile-1.2.0.min.js"></script>
+-->
+</head>
+<body>
+	
+<div data-role="page" id="logPage">
+            <div id="head" data-theme="a" data-role="header" ><!-- data-position="fixed" --> 
+                <h1 id="head_title">
+                    珞珈山水
+                </h1>
+            </div>
+            <div data-role="content">
+                <div id="log_form" data-role="collapsible-set" data-theme="d" data-content-theme="e">
+                    <div data-role="collapsible">
+                        <h3>
+                            登陆山水
+                        </h3>
+                        <form id="logon_form" action="log_auth.php">
+                            <div data-role="fieldcontain">
+                                <fieldset data-role="controlgroup" data-mini="true">
+                                    <label for="u_id_id">
+                                        用户名:
+                                    </label>
+                                    <input name="u_id_name" id="u_id_id" placeholder="guest" value="" type="text" />
+                                </fieldset>
+                            </div>
+                            <div data-role="fieldcontain">
+                                <fieldset data-role="controlgroup" data-mini="true">
+                                    <label for="U_pswd_id">
+                                        密码:
+                                    </label>
+                                    <input name="u_pswd_name" id="U_pswd_id" placeholder="" value="" type="password" />
+                                </fieldset>
+                            </div>
+                            <div id="u_rem_id" data-role="fieldcontain">
+                                <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+                                    <legend>
+                                    </legend>
+                                    <input id="checkbox1" name="u_rem_name" type="checkbox" />
+                                    <label for="checkbox1">
+                                        记住密码
+                                    </label>
+                                </fieldset>
+                            </div>
+                            <input data-inline="true" data-icon="arrow-r" data-iconpos="right" value="匿名" type="button" onclick="getHotTopic();$.mobile.changePage('#hotTopicPage',{transition:'flip',resverse:false,changeHash:false});"/>
+                            <input id="u_clear_id" data-inline="true" data-theme="e" data-icon="delete" data-iconpos="right" value="登录" type="submit" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="foot_id" data-theme="a" data-role="footer">
+                <h3 id="worker_id">
+                    LuoJiaExtra.Group
+                </h3>
+            </div>
+        </div>
+
+<!--    top 10 topic -->
+ <div data-role="page" id="hotTopicPage">
+            <div id="head" data-theme="a" data-role="header" ><!-- data-position="fixed" --> 
+                <h1 id="head_title">
+                    珞珈山水   
+                </h1>
+                <a href="javascript:logout();" id="logout_btn">注销</a>
+                <div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home" class="ui-btn-active ui-state-persist">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid">
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="e" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        山水十大热帖:
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_0">[1]</a>
+                        <span class="ui-li-count" id="sp_0">
+                            +48
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_1">[2]</a>
+                        <span class="ui-li-count" id="sp_1">
+                            +30
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_2">[3]</a>
+                        <span class="ui-li-count" id="sp_2">
+                            +28
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_3">[4]</a>
+                        <span class="ui-li-count" id="sp_3">
+                            +28
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_4">[5][转]</a>
+                        <span class="ui-li-count" id="sp_4">
+                            +16
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_5">[6]</a>
+                        <span class="ui-li-count" id="sp_5">
+                            +15
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_6">[7]</a>
+                        <span class="ui-li-count" id="sp_6">
+                            +15
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_7">[8]</a>
+                        <span class="ui-li-count" id="sp_7">
+                            +14
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_8">[9][转]</a>
+                        <span class="ui-li-count" id="sp_8">
+                            +12
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" title="czFedora" id="info_9">[10]</a>
+                        <span class="ui-li-count" id="sp_9">
+                            +14
+                        </span>
+                    </li>
+                </ul>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3>
+                            版面搜索
+                        </h3>
+                        <div data-role="fieldcontain">
+                            <fieldset data-role="controlgroup" data-mini="true">
+                                <label for="search_id">
+                                </label>
+                                <input name="search_name" id="search_id" placeholder="keywords Press Enter." value="" type="search" />
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="foot_id" data-theme="a" data-role="footer">
+                <h3 id="worker_id">
+                    LuoJiaExtra.Group
+                </h3>
+            </div>
+        </div>
+
+<!-- board recent topic page topic -->
+<div data-role="page" id="boardItemPage">
+            <div data-theme="a" data-role="header">
+                <h3 id="board_name_head_id">
+                    boardName
+                </h3>
+                <div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid">
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        我的关注:
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" data-transition="none" id="l_topic_a_0">
+                            征求关键词.
+                        </a>
+                        <span class="ui-li-count" id="l_topic_sp_0">
+                                +14
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" data-transition="none" id="l_topic_a_1">
+                            征求治版方针
+                        </a>
+                        <span class="ui-li-count" id="l_topic_sp_1">
+                                +15
+                        </span>
+                    </li>
+                    <li data-theme="d">
+                        <a href="../2/app.html" data-transition="none" id="l_topic_a_2">
+                            静态增多,最多几个.
+                        </a>
+                            <span class="ui-li-count" id="l_topic_sp_2">
+                                +23
+                            </span>
+                    </li>
+                    <li data-role="list-divider" role="heading">
+                        近期话题
+                    </li>
+                    <li data-theme="d" id="topic_li_0">
+                        <a href="../2/app.html" data-transition="none" id="topic_a_0"></a>
+                            <span class="ui-li-count" id="topic_sp_0"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_1">
+                        <a href="../2/app.html" data-transition="flip" id="topic_a_1"> </a>
+                            <span class="ui-li-count" id="topic_sp_1"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_2">
+                        <a href="../2/app.html" data-transition="none" id="topic_a_2"></a>
+                            <span class="ui-li-count" id="topic_sp_2"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_3">
+                        <a href="../2/app.html" data-transition="none" id="topic_a_3"> </a>
+                            <span class="ui-li-count" id="topic_sp_3"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_4">
+                        <a href="../2/app.html" data-transition="none" id="topic_a_4"></a>
+                            <span class="ui-li-count" id="topic_sp_4"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_5">
+                        <a href="../2/app.html" data-transition="none" id="topic_a_5"></a>
+                            <span class="ui-li-count" id="topic_sp_5"></span>
+                    </li>
+                    <li data-theme="d" id="topic_li_6" >
+                        <a href="../2/app.html" data-transition="none" id="topic_a_6"></a>
+                            <span class="ui-li-count" id="topic_sp_6"></span>
+                    </li>
+                </ul>
+                <a id="prev_ajax_id" data-role="button" data-inline="true" data-theme="d" href="javascript:ajaxInfoBoardTopic(false);" >
+                    上一批
+                </a>
+                <a id="next_ajax_id" data-role="button" data-inline="true" data-theme="d" href="javascript:ajaxInfoBoardTopic(true);" >
+                    下一批
+                </a>
+            </div>
+            <div data-theme="a" data-role="footer" >
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#Page" data-transition="fade" data-theme="a" data-icon="home">
+                                发帖
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#Page" data-transition="fade" data-theme="a" data-icon="star">
+                                关注?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="refresh">
+                                反馈
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <h3 id="board_name_foot_id">
+                    动漫社区-珞珈山水
+                </h3>
+            </div>
+        </div>
+        <script>
+            //App custom javascript
+            var myReq = getXMLHttpRequest();
+            var boardReq = getXMLHttpRequest();
+            var contentReq = getXMLHttpRequest();
+            var env_nPage=-1;
+            var env_boardName = 'st';
+            var env_boardName_zh ="";
+            var env_gid = 1024;      
+            var env_nContentPage=-1;
+        </script>
+<!--    topic content page -->
+        <div data-role="page" id="contentPage">
+            <div id="head_id" data-theme="a" data-role="header" > <!-- data-position="fixed" -->
+                <h3 id="head_title_id">
+                    青年教师
+                </h3>
+                <div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid">
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">
+				<h3 id="topic_id" style="margin:1px;">
+                    这样世界一流的大学真让青年教师
+                </h3>
+                <div id="0_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_0">
+                            楼主:tangziwei
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_0">
+								<font size="2">tangziwei,01-10:15:50</font>
+								<hr />
+								1. 编写控制台程序，要求用户输入一个1到50之间的整数，计算机计算这
+							</div>
+                     
+                        <a id="reply_id_0" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_0" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        
+                        </div>
+                    </div>
+                </div>
+                <div id="1_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_1">
+                            1楼:whuxy
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_1">
+								
+							</div>
+                        <a id="reply_id_1" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_1" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="2_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_2">
+                            2楼:nancy
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content"  id="text_content_2">
+								
+							</div>
+                        <a id="reply_id_2" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_2" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="3_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_3">
+                            3楼:Tenze
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_3">
+								
+							</div>
+                        <a id="reply_id_3" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_3" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="4_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_4">
+                            4楼:tangziwei
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_4">
+								
+							</div>
+                        <a id="reply_id_4" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_4" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="5_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_5">
+                            5楼:tNzxc
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_5">
+								
+							</div>
+                        <a id="reply_id_5" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_5" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="6_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_6">
+                            6楼:pClink
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_6">
+								
+							</div>
+                        <a id="reply_id_6" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_6" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="7_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_7">
+                            7楼:Tenda
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_7">
+								
+							</div>
+                        <a id="reply_id_7" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_7" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="8_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_8">
+                            8楼:tangziwei
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_8">
+								
+							</div>
+                        <a id="reply_id_8" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_8" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="9_content_id" data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible" data-collapsed="false">
+                        <h3 id="h_content_9">
+                            9楼:sdrbg
+                        </h3>
+                        <div id="content_text_id" class="my-grid">
+							<div class="text-content" id="text_content_9">
+								
+							</div>
+                        <a id="reply_id_9" data-role="button" data-inline="true" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="forward" data-iconpos="left">
+                            回复
+                        </a>
+                        <a id="id_info_id_9" data-role="button" data-inline="true" data-direction="reverse" data-rel="back" data-transition="slidedown" data-theme="d" href="#sidePage" data-icon="info" data-iconpos="left" >
+                            ID
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="foot_id" data-theme="a" data-role="footer" > <!-- data-position="fixed" -->
+				<div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="javascript:loadBoard(env_boardName_zh,env_boardName);" data-transition="flip" data-theme="a" data-icon="home">
+                                版首
+                            </a>
+                        </li>
+                        <li>
+                          <a href="javascript:getContent(false);" data-transition="fade" data-theme="a" data-icon="arrow-u" onclick="$.mobile.silentScroll(60);">
+                                上页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:getContent(true);" data-transition="fade" data-theme="a" data-icon="arrow-d" onclick="$.mobile.silentScroll(60);">
+                                下页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#page1" data-transition="fade" data-theme="a" data-icon="star">
+                                关注?
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <h5 id="foot_text_id">
+                    青年教师版-珞珈山水
+                </h5>
+            </div>
+        </div>
+
+<!-- board list  -->
+<div data-role="page" id="boardListPage">
+            <div data-theme="a" data-role="header">
+                <h3>
+                    分区列表
+                </h3>
+                <div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid" class="ui-btn-active ui-state-persist">
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                 
+            </div>
+            <div data-role="content">
+                <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                    <li data-role="list-divider" role="heading">
+                        我的关注:
+                    </li>
+                    <li data-theme="d">
+                        <a href="javascript:loadBoard('unix_linux','linux');" data-transition="none" >
+                            unix_linux
+                        </a>
+                    </li>
+                    <li data-theme="d">
+                        <a href="javascript:loadBoard('BBS美工',''BBSArt);" data-transition="none">
+                            BBS美工
+                        </a>
+                    </li>
+                    <li data-theme="d">
+                        <a href="javascript:void();" data-transition="none">
+                            更多list和divider
+                        </a>
+                    </li>
+                </ul>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible">
+                        <h3>
+                            社区管理
+                        </h3>
+                        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                            <li data-theme="c">
+                                <a href="javascript:loadBoard('站务公告','En');" data-transition="slide">
+                                    站务公告
+                                    <span class="ui-li-count">
+                                        czFedora
+                                    </span>
+                                </a>
+                            </li>
+                            <li data-theme="c">
+                                <a href="javascript:loadBoard('unix_linux','linux');" data-transition="slide">
+                                    unix_linux
+                                    <span class="ui-li-count">
+                                        whuxy
+                                    </span>
+                                </a>
+                            </li>
+                            <li data-theme="c">
+                                <a href="javascript:loadBoard('Ajax_load it','ajax');" data-transition="slide">
+                                    Ajax_load it
+                                    <span class="ui-li-count">
+                                        tecMe
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible">
+                        <h3>
+                            国内院校
+                        </h3>
+                        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                            <li data-theme="c">
+                                <a href="javascript:loadBoard('清华大学BBS','smth');" data-transition="slide">
+                                    清华大学BBS
+                                    <span class="ui-li-count">
+                                        loveTSing
+                                    </span>
+                                </a>
+                            </li>
+                            <li data-theme="c">
+                                <a href="javascript:loadBoard('未名湖畔BBS','weiming');" data-transition="slide">
+                                    未名湖畔BBS
+                                    <span class="ui-li-count">
+                                        tower
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible">
+                        <h3>
+                            游戏天地
+                        </h3>
+                    </div>
+                </div>
+                <div data-role="collapsible-set" data-theme="e" data-content-theme="d">
+                    <div data-role="collapsible">
+                        <h3>
+                            电脑技术
+                        </h3>
+                        <ul data-role="listview" data-divider-theme="b" data-inset="true">
+							<li data-theme="c">
+                                <a href="javascript:loadBoard('测试','test');" data-transition="slide">
+                                    测试
+                                    <span class="ui-li-count">
+                                        tower
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div data-theme="a" data-role="footer" >
+                <h3 id="tail">
+                    分站列表-珞珈山水
+                </h3>
+            </div>
+</div>
+        
+<!-- Begin post / second page -->
+<section id="sidePage" data-role="page">
+	<header data-role="header"><h1>回复话题</h1> </header>
+	<div data-role="content" class="content">
+		<p>Reply/Post to :</p>
+		<input type="text" name="title" id="topic_title_id" placeholder="title" value=""/>
+		<hr/>
+		<textarea id="content_area"></textarea>
+		<hr/>
+		
+		<input type="submit" name="submit_btn" value="Forward" data-icon="forward" data-iconpos="right"/>
+	</div>
+	<footer data-role="footer"><h1>LuoJiaExtra.Group</h1></footer>
+</section>
+
+<!-- local setting page -->
+<section id="settingPage" data-role="page">
+	<header data-role="header"><h1>本地设置</h1>
+				<div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid" >
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear" class="ui-btn-active ui-state-persist">
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+	</header>
+	<div data-role="content" class="content">
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>登录声音:</legend>
+				<select name="toggleswitch1" id="toggleswitch1" data-theme="a"  data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</fieldset>
+		</div>
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>分享位置:</legend>
+				<select name="toggleswitch1" id="toggleswitch1" data-theme="a"  data-role="slider">
+					<option value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</fieldset>
+		</div>
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>关注帖子有效期:</legend>
+				<input type="radio" name="radio-focus" id="radio-1">
+					<label for="radio-1">1</label>
+				<input type="radio" name="radio-focus" id="radio-2" checked="checked">
+					<label for="radio-2">2</label>
+				<input type="radio" name="radio-focus" id="radio-3">
+					<label for="radio-3">3</label>
+			</fieldset>
+		</div>
+		回帖签名档:
+		<select name="sign">
+			<option value="0">随机签名档</option>
+			<option value="1">山水签名档</option>
+			<option value="2" checked="checked">本地签名档</option>
+			<option value="3">不用签名档</option>
+        </select>
+	</div>
+	<footer data-role="footer">
+		<h1>LuojiaExtra.Group</h1>
+	</footer>
+</section>
+
+<!-- Dynamic page -->
+<section id="dynamicPage" data-role="page">
+	<header data-role="header">
+		<h1>网站动态</h1>
+		<div id="nav_id" data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li>
+                            <a href="#hotTopicPage" data-transition="slidedown" data-theme="a" data-icon="home">
+                                十大
+                            </a>
+                        </li>
+						<li>
+							<a href="#dynamicPage" data-transition="slidedown" data-theme="a" data-icon="info" class="ui-btn-active ui-state-persist">
+                                动态
+                            </a>                            
+                        </li>
+                        <li>
+                            <a href="#boardListPage" data-transition="slidedown" data-theme="a" data-icon="grid" >
+                                分区
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#settingPage" data-transition="flip" data-theme="a" data-icon="gear" >
+                                设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+	</header>
+	<div data-role="content" class="content">
+		<ul>
+			<li>1<hr/></li>
+			<li>2<hr/></li>
+			<li>3<hr/></li>
+			<li>4<hr/></li>
+			<li>5<hr/></li>
+			<li>6<hr/></li>
+			<li>7<hr/></li>
+			<li>8<hr/></li>
+			<li>9<hr/></li>
+			<li>10<hr/></li>
+			<li>11</li>
+		</ul>
+	</div>
+	<footer data-role="footer">
+		<h1>LuoJiaExtra.Group</h1>
+	</footer>
+</section>
+
+        
+<section data-role="page" id="test">
+	<header data-theme="a" data-role="header">
+		<h1>页面测试</h1>
+	</header>
+	<div data-role="content">
+		<select name="toggleswitch1" id="toggleswitch1" data-theme="a"  data-role="slider">
+           <option value="off">Off</option>
+           <option value="on">On</option>
+        </select>
+        <select name="tg">
+			<option value="1">zxc</option>
+			<option value="2">2</option>
+        </select>
+        <div data-role="controlgroup" data-type="horizontal" data-inline="true">
+			<a href="#" data-role="button" data-icon="add">Yes</a>
+			<a href="#" data-role="button">No</a>
+			<a href="#" data-role="button">Cancel</a>
+		</div>
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>Select a Language:</legend>
+				<input type="radio" name="radio-language" id="radio-french">
+					<label for="radio-french">French</label>
+				<input type="radio" name="radio-language" id="radio-italian" checked="checked">
+					<label for="radio-italian">Italian</label>
+				<input type="radio" name="radio-language" id="radio-greek">
+					<label for="radio-greek">Greek</label>
+			</fieldset>
+		</div>
+		<div data-role="fieldcontain">
+			<input type="range" id="slider" name="slider" min="0" max="500">
+		</div>
+
+	</div>
+	<footer data-theme="a" data-role="footer">
+		<h1>页尾测试</h1>
+	</footer>
+</section>
+        <script>
+            function loadContent(board,gID,title) {
+				env_nContentPage =0;
+				
+				getMoreContent(0,board,gID);
+				document.getElementById('topic_id').innerHTML = "主题:"+title;
+				document.getElementById('foot_text_id').innerHTML = board+"-珞珈山水";
+				document.getElementById('head_title_id').innerHTML = board;
+				$.mobile.changePage("#contentPage",{transition:"flip",resverse:false,changeHash:true});
+				env_boardName = board;
+				env_gid = gID;
+				
+			}
+			function loadBoard(board_zh,board_en) {
+				document.getElementById('board_name_head_id').innerHTML = board_zh == "" ? board_en : board_zh;
+				document.getElementById('board_name_foot_id').innerHTML = board_zh == "" ? board_en : board_zh;
+				getMore(0,board_en);
+				$.mobile.changePage("#boardItemPage",{transition:"flip",resverse:false,changeHash:true});
+				env_boardName = board_en;
+				env_nPage = 0;
+				env_boardName_zh = board_zh;
+			}
+			function replyTo(author,reID){
+				//env_boardName
+			}
+			function IDDetail(id){
+			
+			}
+        </script>
+
+
+</body>
+</html>
